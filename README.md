@@ -2,7 +2,7 @@
 
 This folder organizes reusable prompt templates by use case.
 
-All prompt references in this doc use paths relative to `docs/prompts/`.
+All prompt references in this doc are repo-relative paths.
 
 ## Goal-only router (deterministic first match)
 
@@ -146,6 +146,7 @@ Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/qa-audit.md
 ## Prompt index
 
 - `CONTRACTS.md` — matrix of prompt output contracts (required heading order, status vocabulary, and README-schema override behavior).
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for prompt docs and contracts.
 
 ### `migration/`
 - `migration/nextmig.md` — orchestrates Express + Vite → Next.js migration slices with gates, verification, and ledger updates. Output: migration slice plan + checklist + ledger update notes.
@@ -158,6 +159,7 @@ Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/qa-audit.md
 - `workflows/qa-audit.md` — run a structured QA audit and report findings with evidence. Output: issue list with severity, repro, and evidence.
 - `workflows/perf-investigation.md` — investigate performance issues and propose/verify improvements. Output: bottleneck analysis + measured before/after impact.
 - `workflows/refactor-safe.md` — perform low-risk refactors with explicit safety checks. Output: behavior-preserving refactor plan + validation notes.
+- `workflows/portability-upgrade.md` — docs-only portability pass guide for keeping paths/tooling examples ecosystem-neutral.
 
 ## Conventions for new prompts
 
@@ -168,4 +170,4 @@ Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/qa-audit.md
   2. required inputs,
   3. execution steps,
   4. verification/reporting format.
-- Prefer adding new files in these subfolders; avoid placing prompt files directly under `docs/prompts/`.
+- Prefer adding new files in these subfolders; avoid placing prompt files at repo root unless they are top-level registry/governance docs.

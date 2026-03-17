@@ -1,7 +1,16 @@
 # Migration Prompt
 
+## Portability defaults (repo/web-safe)
+- `SourceStack`: `Express+Vite` (override per repo)
+- `TargetStack`: `Next.js` (override per repo)
+- `LedgerPath`: `docs/MIGRATION_GUIDE.md` (override per repo)
+- `CutoverChecklistPath`: `docs/next-cutover-checklist.md` (override per repo)
+- `LedgerSectionPattern`: `Migration ledger update (slice: …)` (override per repo)
+
+Specialization note: defaults are tuned for Express+Vite -> Next.js web migrations, but this prompt is reusable by overriding the values above.
+
 ## Router-first
-- **Use when:** goal is Next.js migration slices, cutover/decommission gating, or Express+Vite ownership moves.
+- **Use when:** goal is `TargetStack` migration slices, cutover/decommission gating, or `SourceStack` ownership moves.
 - **Do not use when:** goal is generic feature delivery or non-migration bug fixing.
 - **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/qa-audit.md`.
 - **Required mode/inputs:** `Mode: triage|implement|cutover|qa` and `Scope: <route/feature>`.
@@ -11,7 +20,7 @@
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.
 - **Deterministic defaults when omitted:** `Mode=implement`; `Scope=one route/feature migration slice inferred from Goal`; `Constraints=preserve parity, keep slice reversible, no new ledger file`; `Definition of done=one valid slice completed with required verification evidence and ledger update notes`.
 
-Migrate an Express + Vite app to Next.js in small, reversible slices.
+Migrate a `SourceStack` app to `TargetStack` in small, reversible slices.
 ## Entry point (solo-dev default)
 - Use this file as the single entry point in Codex.
 - Start each request with: `Mode: triage|implement|cutover|qa` and `Scope: <route/feature>`.
@@ -20,13 +29,14 @@ Migrate an Express + Vite app to Next.js in small, reversible slices.
 Mode behavior:
 - `triage`: classify scope/risk, define slice boundary, and decide go/split.
 - `implement`: execute one valid migration slice end-to-end.
-- `cutover`: run ownership flip/decommission gates mapped to `docs/next-cutover-checklist.md`.
+- `cutover`: run ownership flip/decommission gates mapped to `CutoverChecklistPath`.
 - `qa`: read-only audit; no edits; report findings and UNKNOWN runtime checks.
 
 ## 0) Non-negotiables (must follow)
-- Update migration ledger only in `docs/MIGRATION_GUIDE.md` under existing “Migration ledger update (slice: …)” sections.
-- Cutover/decommission gates must reference `docs/next-cutover-checklist.md`.
+- Update migration ledger only in `LedgerPath` under existing `LedgerSectionPattern` sections.
+- Cutover/decommission gates must reference `CutoverChecklistPath`.
 - Do not create a new migration ledger file unless explicitly requested.
+- If `LedgerPath` or `CutoverChecklistPath` does not exist, mark `BLOCKED` with exact next action to create/register it in-repo.
 - Keep guidance concise and practical (KISS).
 - Smallest safe change only; no new deps unless requested.
 - Never invent APIs/flags/commands.
@@ -51,7 +61,7 @@ A slice is valid only if all are true:
 2. Fast rollback via config/ownership/feature gate
 3. No unintended API/SEO/auth break
 4. Bounded verification (smallest relevant suite + one critical smoke flow)
-5. Traceable ledger update in `docs/MIGRATION_GUIDE.md`
+5. Traceable ledger update in `LedgerPath`
 
 If not valid, split smaller.
 
@@ -87,6 +97,15 @@ Unless docs/comments-only, run:
 3. unit/integration tests
 4. e2e smoke for affected critical journey(s)
 
+Command resolution order (portable):
+1. Use repo standard pipeline/scripts first.
+2. If absent, run the smallest relevant touched-area suite.
+3. If still unavailable, mark `UNKNOWN` with exact blocker + exact next command.
+
+Example fallback:
+- If no `typecheck` script exists, run available typed checks (if any) from repo pipeline; otherwise mark `UNKNOWN` and record the exact missing script.
+- If no `e2e` script exists, run the nearest manual smoke flow for the critical journey and record `UNKNOWN` for automated e2e until wired.
+
 If docs/comments-only:
 - Skip full test pipeline
 - Run quick sanity check (format/links/spelling)
@@ -109,7 +128,7 @@ Use everywhere (gates, verification, checklist, ledger):
 3. Changes made (code-first)  
 4. Verification commands + results (exact commands + statuses)  
 5. Risks/open concerns  
-6. Migration ledger updates (`docs/MIGRATION_GUIDE.md`)  
+6. Migration ledger updates (`LedgerPath`)  
 7. Next steps (max 3)
 
 ## 8) Mandatory per-slice declarations
@@ -137,8 +156,8 @@ Debt entry template:
 Slice is complete only when:
 1. P0 parity is `PASS`
 2. Required verification statuses are present
-3. Ledger is updated in `docs/MIGRATION_GUIDE.md`
-4. Next required gate references `docs/next-cutover-checklist.md`
+3. Ledger is updated in `LedgerPath`
+4. Next required gate references `CutoverChecklistPath`
 5. Rollback path is documented
 
 ## 10) Frontend visual parity evidence policy
@@ -156,12 +175,12 @@ Slice is complete only when:
   4. owner
 
 ## 12) Cutover/decommission gate policy
-- Any ownership flip that affects runtime serving path must map to a gate in `docs/next-cutover-checklist.md`.
+- Any ownership flip that affects runtime serving path must map to a gate in `CutoverChecklistPath`.
 - Decommission actions (removing legacy route handlers/pages) require:
   - parity evidence for affected routes
   - rollback path documented
   - gate status recorded with shared evidence format.
-- If decommission is deferred, record as deferred parity debt in `docs/MIGRATION_GUIDE.md`.
+- If decommission is deferred, record as deferred parity debt in `LedgerPath`.
 
 ## 13) PR/status artifact requirements
 Each PR/status update must include:
@@ -169,8 +188,8 @@ Each PR/status update must include:
 2. touched files (grouped by route/feature)
 3. rollback instruction
 4. verification table (command + status + evidence)
-5. ledger update snippet location (`docs/MIGRATION_GUIDE.md` section heading)
-6. link/reference to `docs/next-cutover-checklist.md` gate entry
+5. ledger update snippet location (`LedgerPath` section heading)
+6. link/reference to `CutoverChecklistPath` gate entry
 
 ## 14) Risk controls for migration slices
 - Do not bundle unrelated refactors into a migration slice.
@@ -225,7 +244,7 @@ Use this exact structure for implementation updates:
 - ...
 
 6. Migration ledger updates
-- `docs/MIGRATION_GUIDE.md` → "Migration ledger update (slice: ...)"
+- `LedgerPath` → `LedgerSectionPattern`
 
 7. Next steps (max 3)
 - `<exact command>`

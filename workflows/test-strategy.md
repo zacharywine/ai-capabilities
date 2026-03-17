@@ -78,7 +78,7 @@ If execution is blocked (missing tool, CI-only secret, network restriction, unav
 
 Example:
 
-- `BLOCKED - npm run test:e2e`
+- `BLOCKED - <repo-e2e-command>`
   Blocker: test DB container not available in this environment.
-  Would run: `docker compose up -d db && npm run test:e2e`.
+  Would run: `<repo-service-start-command> && <repo-e2e-command>`.
   Expected signal: checkout flow completes; order persisted; no uncaught errors.

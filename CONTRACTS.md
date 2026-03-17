@@ -12,3 +12,8 @@ This matrix captures each prompt-local output contract and status vocabulary.
 | `workflows/test-strategy.md` | Ordered sections 1-5: Test pyramid mapping → Critical paths → Edge and error cases → Minimal suite for touched area → Command matrix with expected signals; plus unknown/blocked handling | `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/perf-investigation.md` | Ordered sections 1-5: Baseline Metric Capture → Hotspot Identification → Candidate Optimizations → Minimal Change Patch Plan → Post-Change Comparison Format; then Output Checklist | Command/check evidence rows use `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/refactor-safe.md` | 1) Scope declaration → 2) Slice plan → 3) Risk checklist (before) → 4) Implementation notes → 5) Verification results → 6) Risk checklist (after) → 7) Rollback notes | Verification command reporting uses `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
+
+
+## Portability references
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` is the docs-only consistency checklist for portability passes.
+- `workflows/portability-upgrade.md` is the docs-only workflow for portability normalization.

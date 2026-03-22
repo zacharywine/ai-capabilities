@@ -38,7 +38,7 @@ When input is only a goal (no explicit capability/workflow name), route by first
 | Asks for a static/read-only quality review or audit findings | `workflows/static-audit.md` |
 | Asks to define test scope/coverage/strategy for a change | `workflows/test-strategy.md` |
 | Asks to diagnose or measure slowness, regressions, throughput, latency, or establish a performance baseline | `workflows/investigate-performance.md` |
-| Asks for behavior-preserving cleanup/refactor only | `workflows/implement-change.md (refactor-safe mode)` |
+| Asks for behavior-preserving cleanup/refactor only | `workflows/implement-change.md` (Refactor-safe mode) |
 | If the goal is ambiguous (high-level outcome only, no clear plan vs build vs debug intent) | `workflows/plan-delivery.md` (run a 3-line triage preamble: scope, risk, intent; then select the best-fit workflow) |
 | Default for implementation/change delivery requests | `workflows/implement-change.md` |
 
@@ -74,7 +74,7 @@ Ordered to reflect first-match routing; keep only the first hit.
 | "Do a read-only QA pass on signup flow." | `workflows/static-audit.md` |
 | "Define test coverage for the new billing webhook." | `workflows/test-strategy.md` |
 | "Measure API latency regression from last release." | `workflows/investigate-performance.md` |
-| "Refactor cart totals module without changing behavior." | `workflows/implement-change.md (refactor-safe mode)` |
+| "Refactor cart totals module without changing behavior." | `workflows/implement-change.md` (Refactor-safe mode) |
 | "Add bulk invite support for team admins." | `workflows/implement-change.md` |
 | "Create a delivery roadmap for SOC2 logging work." | `workflows/plan-delivery.md` |
 | "Broken mobile nav on iOS after yesterday's merge." | `workflows/debug-fix.md` |
@@ -118,7 +118,7 @@ When goal-only routing applies, always follow router-first rules above.
 3. Unsure what tests are enough → `workflows/test-strategy.md`
 4. Want an independent quality pass → `workflows/static-audit.md`
 5. Slow page/API/system path → `workflows/investigate-performance.md`
-6. Cleanup without behavior changes → `workflows/implement-change.md (refactor-safe mode)`
+6. Cleanup without behavior changes → `workflows/implement-change.md` (Refactor-safe mode)
 
 Default sequence for solo work:
 
@@ -135,11 +135,11 @@ Default sequence for solo work:
 - Perf: `workflows/investigate-performance.md` → `workflows/plan-delivery.md` (if needed) → `workflows/implement-change.md` → `workflows/static-audit.md`
   - Handoff artifact: baseline metrics, bottleneck notes, target metric, and change plan.
   - Stop condition: target metric hit (or tradeoff documented) and QA sign-off.
-- Refactor: `workflows/implement-change.md (refactor-safe mode)` → `workflows/test-strategy.md` → `workflows/static-audit.md`
+- Refactor: `workflows/implement-change.md` (Refactor-safe mode) → `workflows/test-strategy.md` → `workflows/static-audit.md`
   - Handoff artifact: refactor scope, invariants, and safety check list.
   - Stop condition: behavior unchanged, safety checks pass, QA clean.
 
-Typical chained capabilities (mixed intent):
+Typical chained workflows (mixed intent):
 
 `workflows/plan-delivery.md` → `workflows/implement-change.md` → `workflows/test-strategy.md` → `workflows/static-audit.md`
 
@@ -184,8 +184,8 @@ These should adopt the same deterministic routing and explicit input/output expe
 - `workflows/test-strategy.md` — define targeted, risk-based test coverage for a change. Output: prioritized test matrix and execution scope.
 - `workflows/static-audit.md` — run a structured QA audit and report findings with evidence. Output: issue list with severity, repro, and evidence.
 - `workflows/investigate-performance.md` — investigate performance issues and propose/verify improvements. Output: bottleneck analysis + measured before/after impact.
-- `workflows/implement-change.md (refactor-safe mode)` — perform low-risk refactors with explicit safety checks. Output: behavior-preserving refactor plan + validation notes.
-- portability-upgrade workflow — archived in this cleanup (removed from active workflow routing).
+- `workflows/implement-change.md` (Refactor-safe mode) — perform low-risk refactors with explicit safety checks. Output: behavior-preserving refactor plan + validation notes.
+- portability-upgrade workflow — archived (not part of active workflow routing).
 
 ### Conventions for new workflows/capabilities
 

@@ -1,8 +1,8 @@
-# Prompt Contracts Matrix
+# Capability & Workflow Contracts Matrix
 
-This matrix captures each prompt-local output contract and status vocabulary.
+This matrix captures each capability/workflow-local output contract and status vocabulary.
 
-| Prompt | Required headings/order | Status vocabulary | Overrides README schema? |
+| Capability / workflow doc | Required headings/order | Status vocabulary | Overrides README schema? |
 |---|---|---|---|
 | `migration/nextmig.md` | 1) Assumptions → 2) Gate status → 3) Changes made → 4) Verification commands + results → 5) Risks/open concerns → 6) Migration ledger updates → 7) Next steps (max 3) | `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/delivery-plan.md` | 1) Assumptions → 2) Milestone slices → 3) Dependencies → 4) Risk register → 5) Verification strategy → 6) Exit criteria | Dependencies keep planning axis (`ready`, `blocked`, `unknown`); command/check reporting uses `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
@@ -15,5 +15,5 @@ This matrix captures each prompt-local output contract and status vocabulary.
 
 
 ## Portability references
-- `CONTRACTS_PORTABILITY_CHECKLIST.md` is the docs-only consistency checklist for portability passes.
-- `workflows/portability-upgrade.md` is the docs-only workflow for portability normalization.
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` is the docs-only consistency checklist for capability/workflow portability passes.
+- `workflows/portability-upgrade.md` is the docs-only workflow document for portability normalization.

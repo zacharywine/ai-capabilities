@@ -1,4 +1,4 @@
-# Migration Prompt
+# Migration Workflow Contract
 
 ## Portability defaults (repo/web-safe)
 - `SourceStack`: `Express+Vite` (override per repo)

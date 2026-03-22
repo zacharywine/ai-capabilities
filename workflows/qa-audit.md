@@ -2,7 +2,7 @@
 
 ## Router-first
 - **Use when:** goal is a static, read-only QA audit with severity-ranked findings.
-- **Do not use when:** goal requires runtime execution, implementation, or migration cutover work.
+- **Do not use when:** goal requires runtime execution or implementation work.
 - **Typical chained prompts:** `workflows/debug-fix.md` (for remediation) -> `workflows/test-strategy.md`.
 - **Required mode/inputs:** static inspection mode only.
 
@@ -15,7 +15,7 @@ Use this prompt when performing a **static-only QA audit** of a codebase, PR, or
 ## Mode & Guardrails
 - Operate in **static inspection mode only**.
 - **Do not edit files.**
-- **Do not run the application, tests, scripts, builds, migrations, or any runtime command** unless explicitly requested by the user.
+- **Do not run the application, tests, scripts, builds, data-shape commands, or any runtime command** unless explicitly requested by the user.
 - If runtime verification is requested, do only what was explicitly approved.
 
 ## Required Output Format

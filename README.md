@@ -1,6 +1,6 @@
 # ai-capabilities
 
-This repository is a centralized library of reusable AI capabilities. Today, `workflows/` is the strongest and most complete content type, with deterministic routing and execution guidance for common engineering goals.
+This repository is a centralized library of reusable AI capabilities, organized around `workflows/` as the primary capability family.
 
 All capability references in this doc are repo-relative paths.
 
@@ -12,10 +12,9 @@ All capability references in this doc are repo-relative paths.
 
 ## What belongs here
 
-- Reusable capability definitions that are safe to apply across projects.
+- Reusable workflow definitions that are safe to apply across projects.
 - Deterministic routing/selection rules for goal-only requests.
 - Execution and verification patterns for delivery, debugging, QA, testing, performance, and refactors.
-- Specialized migration capability paths (for example, Next.js migration slices).
 
 ## What does not belong here
 
@@ -23,7 +22,7 @@ All capability references in this doc are repo-relative paths.
 - Unscoped ad-hoc instructions without defined inputs/outputs.
 - Capability docs that skip verification/reporting expectations.
 
-## Primary content type today (`workflows/`)
+## Primary content type (`workflows/`)
 
 `workflows/` is the default capability family for day-to-day engineering execution.
 
@@ -33,7 +32,6 @@ When input is only a goal (no explicit capability/workflow name), route by first
 
 | First-match rule (in order) | Route to |
 |---|---|
-| Mentions Next.js migration, cutover, or Express/Vite migration slice work | `migration/nextmig.md` |
 | Asks to debug a defect, failure, incident, broken behavior, or a performance defect with known failing behavior | `workflows/debug-fix.md` |
 | Asks for plan-only output, milestones, sequencing, or delivery roadmap | `workflows/delivery-plan.md` |
 | Asks for both a plan and implementation in one request | `workflows/feature-delivery.md` (start with a short `Plan` section) |
@@ -70,7 +68,6 @@ Ordered to reflect first-match routing; keep only the first hit.
 
 | Goal-only user input | Expected route |
 |---|---|
-| "Migrate auth pages from Express/Vite to Next.js this sprint." | `migration/nextmig.md` |
 | "Checkout throws 500 after coupon apply; fix it." | `workflows/debug-fix.md` |
 | "Give me milestones to ship account deletion safely." | `workflows/delivery-plan.md` |
 | "Plan and build dark mode end-to-end." | `workflows/feature-delivery.md` |
@@ -116,13 +113,12 @@ If you only use one starting capability, use this decision path:
 
 When goal-only routing applies, always follow router-first rules above.
 
-1. Next.js migration slice work → `migration/nextmig.md`
-2. New feature or change request → `workflows/feature-delivery.md`
-3. Bug report or failing behavior → `workflows/debug-fix.md`
-4. Unsure what tests are enough → `workflows/test-strategy.md`
-5. Want an independent quality pass → `workflows/qa-audit.md`
-6. Slow page/API/system path → `workflows/perf-investigation.md`
-7. Cleanup without behavior changes → `workflows/refactor-safe.md`
+1. New feature or change request → `workflows/feature-delivery.md`
+2. Bug report or failing behavior → `workflows/debug-fix.md`
+3. Unsure what tests are enough → `workflows/test-strategy.md`
+4. Want an independent quality pass → `workflows/qa-audit.md`
+5. Slow page/API/system path → `workflows/perf-investigation.md`
+6. Cleanup without behavior changes → `workflows/refactor-safe.md`
 
 Default sequence for solo work:
 
@@ -174,16 +170,12 @@ These should adopt the same deterministic routing and explicit input/output expe
 
 ## Repo map
 
-- `migration/` — specialized capabilities for migration/cutover work (including `migration/nextmig.md`).
 - `workflows/` — primary capabilities for delivery and engineering workflow execution.
 
 ### Capability index
 
 - `CONTRACTS.md` — matrix of capability output contracts (required heading order, status vocabulary, and README-schema override behavior).
 - `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for capability docs and contracts.
-
-### `migration/`
-- `migration/nextmig.md` — orchestrates Express + Vite → Next.js migration slices with gates, verification, and ledger updates. Output: migration slice plan + checklist + ledger update notes.
 
 ### `workflows/`
 - `workflows/delivery-plan.md` — plan scoped delivery work into clear, executable steps. Output: ordered implementation plan with risks/dependencies.
@@ -197,11 +189,11 @@ These should adopt the same deterministic routing and explicit input/output expe
 
 ### Conventions for new workflows/capabilities
 
-- Put migration-focused capabilities in `migration/`; put day-to-day delivery/playbook capabilities in `workflows/`.
-- Use lowercase kebab-case filenames (example: `workflows/api-contract-audit.md`).
+- Add reusable capabilities under `workflows/`.
+- Use lowercase kebab-case filenames (example: `workflows/<new-workflow>`).
 - Keep each capability self-contained with:
   1. purpose,
   2. required inputs,
   3. execution steps,
   4. verification/reporting format.
-- Prefer adding new files in these subfolders; avoid placing capability files at repo root unless they are top-level registry/governance docs.
+- Prefer adding new files in `workflows/`; avoid placing capability files at repo root unless they are top-level registry/governance docs.

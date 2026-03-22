@@ -14,7 +14,6 @@ Use this workflow to normalize prompt-library docs for cross-repo portability wi
    - `README.md`
    - `CONTRACTS.md`
    - `CONTRACTS_PORTABILITY_CHECKLIST.md`
-   - `migration/nextmig.md`
 
 ## Output format
 1. Assumptions

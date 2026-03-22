@@ -2,7 +2,7 @@
 
 ## Router-first
 - **Use when:** goal is implementing a scoped change with verification and rollback notes.
-- **Do not use when:** goal is migration orchestration, plan-only output, or static-only audit.
+- **Do not use when:** goal is plan-only output or static-only audit.
 - **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/qa-audit.md`.
 - **Required mode/inputs:** none.
 

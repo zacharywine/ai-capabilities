@@ -7,12 +7,12 @@
 - `CutoverChecklistPath`: `docs/next-cutover-checklist.md` (override per repo)
 - `LedgerSectionPattern`: `Migration ledger update (slice: …)` (override per repo)
 
-Specialization note: defaults are tuned for Express+Vite -> Next.js web migrations, but this prompt is reusable by overriding the values above.
+Specialization note: defaults are tuned for Express+Vite -> Next.js web migrations, but this workflow contract is reusable by overriding the values above.
 
 ## Router-first
 - **Use when:** goal is `TargetStack` migration slices, cutover/decommission gating, or `SourceStack` ownership moves.
 - **Do not use when:** goal is generic feature delivery or non-migration bug fixing.
-- **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/qa-audit.md`.
+- **Typical chained workflows:** `workflows/test-strategy.md` -> `workflows/qa-audit.md`.
 - **Required mode/inputs:** `Mode: triage|implement|cutover|qa` and `Scope: <route/feature>`.
 
 ## Minimal input contract
@@ -46,14 +46,14 @@ Mode behavior:
 - For each slice: short plan → implement → verify → ledger update.
 
 ## 2) Source-of-truth order
-1. Current user prompt/instructions
+1. Current user request/instructions
 2. AGENTS.md in scope (nearest wins)
 3. Repo scripts/config
 4. Contract/registry files (routes, ownership, env schema, API contracts)
 5. Tests
 6. Docs
 
-Conflict resolution: user prompt > AGENTS.md > executable code/tests > docs/comments.
+Conflict resolution: user request > AGENTS.md > executable code/tests > docs/comments.
 
 ## 3) Valid migration slice (hard gate)
 A slice is valid only if all are true:
@@ -213,14 +213,14 @@ Also include:
 - no invented commands or flags
 - if checks weren’t run, mark `UNKNOWN` with exact reason and next command.
 
-## 16) Prompt evolution policy
-- Keep this prompt as a living contract.
+## 16) Workflow contract evolution policy
+- Keep this workflow contract as a living contract.
 - Any new rule should be additive, minimal, and non-conflicting with:
   1. user instructions
   2. AGENTS.md
   3. executable tests/config
 - If conflicts appear, apply precedence:
-  user prompt > AGENTS.md > code/tests > docs/comments.
+  user request > AGENTS.md > code/tests > docs/comments.
 
 ## 17) Copy/paste assistant output template
 Use this exact structure for implementation updates:

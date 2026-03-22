@@ -25,9 +25,9 @@ Return findings grouped in this exact order:
 For each finding include:
 - **Title**
 - **Location** (file path + lines)
-- **Why it matters**
+- **Why It Matters**
 - **Evidence**
-- **Actionable fix**
+- **Actionable Fix**
 
 If a severity has no findings, include `- none`.
 End with a brief summary count by severity.

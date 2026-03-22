@@ -32,18 +32,16 @@ When input is only a goal (no explicit capability/workflow name), route by first
 
 | First-match rule (in order) | Route to |
 |---|---|
-| Asks to debug a defect, failure, incident, broken behavior, or a performance defect with known failing behavior | `workflows/debug-fix.md` |
-| Asks for plan-only output, milestones, sequencing, or delivery roadmap | `workflows/plan-delivery.md` |
-| Asks for both a plan and implementation in one request | `workflows/implement-change.md` (start with a short `Plan` section) |
-| Asks for a static/read-only quality review or audit findings | `workflows/static-audit.md` |
-| Asks to define test scope/coverage/strategy for a change | `workflows/test-strategy.md` |
-| Asks to diagnose or measure slowness, regressions, throughput, latency, or establish a performance baseline | `workflows/investigate-performance.md` |
-| Asks for behavior-preserving cleanup/refactor only | `workflows/implement-change.md` (Refactor-safe mode) |
-| If the goal is ambiguous (high-level outcome only, no clear plan vs build vs debug intent) | `workflows/plan-delivery.md` (run a 3-line triage preamble: scope, risk, intent; then select the best-fit workflow) |
-| Default for implementation/change delivery requests | `workflows/implement-change.md` |
+| Fix-now failure intent (debug/fix broken behavior, incident, regression with known failing behavior) | `workflows/debug-fix.md` |
+| Plan-only artifact intent (milestones, sequencing, roadmap, delivery plan; no build request) | `workflows/plan-delivery.md` |
+| Code-change intent (implement/build/change delivery, with or without a short plan) | `workflows/implement-change.md` |
+| Measurement/profile/baseline intent (measure, profile, benchmark, establish baseline) | `workflows/investigate-performance.md` |
+| Behavior-preserving cleanup/refactor-only intent | `workflows/implement-change.md` (Refactor-safe mode) |
+| Static/read-only quality review intent | `workflows/static-audit.md` |
+| Test-scope/coverage/strategy intent | `workflows/test-strategy.md` |
+| Ambiguous high-level outcome only (no clear fix vs measure vs plan vs build verb) | `workflows/plan-delivery.md` (run 3-line triage: scope, risk, intent; then choose workflow) |
 
-If multiple rules match, use the first row only.
-Tie-break (only after the ambiguous-goal triage row is considered): if the user asks for baseline/measurement, route to `workflows/investigate-performance.md`; if the user asks to fix a concrete failing behavior (including performance), route to `workflows/debug-fix.md`.
+If multiple rules match, use this tie-break sentence: fix-now verbs beat measurement verbs, and measurement/profile/baseline verbs beat planning verbs.
 
 ### Input precedence (hybrid model)
 
@@ -71,23 +69,23 @@ Ordered to reflect first-match routing; keep only the first hit.
 | "Checkout throws 500 after coupon apply; fix it." | `workflows/debug-fix.md` |
 | "Give me milestones to ship account deletion safely." | `workflows/plan-delivery.md` |
 | "Plan and build dark mode end-to-end." | `workflows/implement-change.md` |
-| "Do a read-only QA pass on signup flow." | `workflows/static-audit.md` |
-| "Define test coverage for the new billing webhook." | `workflows/test-strategy.md` |
 | "Measure API latency regression from last release." | `workflows/investigate-performance.md` |
 | "Refactor cart totals module without changing behavior." | `workflows/implement-change.md` (Refactor-safe mode) |
 | "Add bulk invite support for team admins." | `workflows/implement-change.md` |
 | "Create a delivery roadmap for SOC2 logging work." | `workflows/plan-delivery.md` |
+| "Do a read-only QA pass on signup flow." | `workflows/static-audit.md` |
+| "Define test coverage for the new billing webhook." | `workflows/test-strategy.md` |
 | "Broken mobile nav on iOS after yesterday's merge." | `workflows/debug-fix.md` |
 | "Improve dashboard responsiveness and capture baseline." | `workflows/investigate-performance.md` |
-| "Make the onboarding flow better for enterprise users." | `workflows/plan-delivery.md` (ambiguous triage row matches before default) |
+| "Make onboarding better for enterprise users." | `workflows/plan-delivery.md` (ambiguous high-level outcome only) |
 
 Ambiguous inputs resolved by tie-break (still first-match):
 
 | Ambiguous goal-only input | Why ambiguous | Tie-break outcome |
 |---|---|---|
-| "Checkout is slow; profile it and make it fast." | Could be perf investigation or defect fix. | `workflows/debug-fix.md` (asks to fix concrete failing behavior). |
-| "Auth got slower after deploy; establish baseline first." | Could be defect triage or perf work. | `workflows/investigate-performance.md` (explicit baseline/measurement ask). |
-| "Plan and implement fixes for search latency regression." | Could match plan-only, plan+build, and perf/debug intents. | `workflows/implement-change.md` (plan+implementation rule appears before perf/refactor/default). |
+| "Checkout is slow; profile it and make it fast." | Contains both measurement and fix-now verbs. | `workflows/debug-fix.md` (fix-now verbs beat measurement verbs). |
+| "Auth got slower after deploy; establish baseline and roadmap." | Contains both measurement and planning verbs. | `workflows/investigate-performance.md` (measurement verbs beat planning verbs). |
+| "Plan milestones, then implement retry logic for webhook failures." | Contains planning and code-change verbs. | `workflows/implement-change.md` (code-change intent, with short plan allowed). |
 
 Fallback example trigger: `"Make checkout better."`
 

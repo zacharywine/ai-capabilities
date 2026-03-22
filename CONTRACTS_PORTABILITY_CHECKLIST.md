@@ -1,6 +1,6 @@
 # Contracts Portability Checklist
 
-Use this checklist for docs-only portability passes across prompt files.
+Use this checklist for docs-only portability passes across capability/workflow files.
 
 ## Status vocabulary
 Use only: `PASS` | `FAIL` | `BLOCKED` | `UNKNOWN`.
@@ -8,7 +8,7 @@ Use only: `PASS` | `FAIL` | `BLOCKED` | `UNKNOWN`.
 ## Checklist
 - [ ] README path references are repo-relative and do not assume a fixed `docs/prompts/` root.
 - [ ] `workflows/test-strategy.md` canonical examples are toolchain-neutral (`<repo-...-command>` placeholders), without hardcoded ecosystem defaults.
-- [ ] `CONTRACTS.md` prompt contract matrix remains unchanged unless a prompt-local output contract actually changed.
+- [ ] `CONTRACTS.md` capability/workflow contract matrix remains unchanged unless a capability/workflow-local output contract actually changed.
 - [ ] `migration/nextmig.md` portability defaults and verification fallback policy remain aligned with README and contracts.
 - [ ] `workflows/portability-upgrade.md` guidance matches this checklist and does not introduce new status terms.
 

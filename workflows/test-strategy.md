@@ -1,9 +1,9 @@
-# Test Strategy Prompt
+# Test Strategy Workflow
 
 ## Router-first
 - **Use when:** goal is defining minimal, risk-based test coverage for a scoped change.
 - **Do not use when:** goal is implementing code changes or performing static QA findings.
-- **Typical chained prompts:** `workflows/implement-change.md` -> `workflows/static-audit.md`.
+- **Typical chained workflows:** `workflows/implement-change.md` -> `workflows/static-audit.md`.
 - **Required mode/inputs:** touched area and critical user path(s).
 
 ## Minimal input contract

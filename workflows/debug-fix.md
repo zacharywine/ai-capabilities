@@ -1,9 +1,9 @@
-# Debug Fix Prompt
+# Debug Fix Workflow
 
 ## Router-first
 - **Use when:** goal is to reproduce, isolate, and fix a defect or failing behavior.
 - **Do not use when:** goal is plan-only sequencing or static-only QA audit.
-- **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/static-audit.md`.
+- **Typical chained workflows:** `workflows/test-strategy.md` -> `workflows/static-audit.md`.
 - **Required mode/inputs:** none.
 
 ## Minimal input contract
@@ -11,7 +11,7 @@
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.
 - **Deterministic defaults when omitted:** `Mode=fix`; `Scope=smallest area needed to reproduce and isolate the defect in Goal`; `Constraints=evidence-first, minimal change, no unrelated refactors`; `Definition of done=repro is fixed, targeted verification passes, rollback note included`.
 
-Use this prompt to drive a fast, evidence-first bug fix.
+Use this workflow to drive a fast, evidence-first bug fix.
 ## Required flow
 
 ### 1) Reproduction recipe
@@ -112,7 +112,7 @@ Needs:
 ```
 
 ## Output contract
-Note: This prompt uses a prompt-local output contract and overrides the README default schema.
+Note: This workflow uses a workflow-local output contract and overrides the README default schema.
 
 
 Always return in this order:

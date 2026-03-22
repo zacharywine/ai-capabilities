@@ -13,11 +13,11 @@
 
 ## Required flow
 1. **Assumptions**
-2. **Milestone slices** (goal, scope in/out, owner, effort, rollback note)
+2. **Milestone Slices** (goal, scope in/out, owner, effort, rollback note)
 3. **Dependencies** (`ready|blocked|unknown` + next action for non-ready)
-4. **Risk register** (likelihood, impact, mitigation, contingency trigger)
-5. **Verification strategy** (checks/evidence/owner; use `PASS|FAIL|BLOCKED|UNKNOWN` for command reporting)
-6. **Exit criteria**
+4. **Risk Register** (likelihood, impact, mitigation, contingency trigger)
+5. **Verification Strategy** (checks/evidence/owner; use `PASS|FAIL|BLOCKED|UNKNOWN` for command reporting)
+6. **Exit Criteria**
 
 ## Response constraints
 - No file edits and no mutating commands.

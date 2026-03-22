@@ -1,12 +1,35 @@
-# Prompt Library
+# ai-capabilities
 
-This folder organizes reusable prompt templates by use case.
+This repository is a centralized library of reusable AI capabilities. Today, `workflows/` is the strongest and most complete content type, with deterministic routing and execution guidance for common engineering goals.
 
-All prompt references in this doc are repo-relative paths.
+All capability references in this doc are repo-relative paths.
 
-## Goal-only router (deterministic first match)
+## Purpose
 
-When input is only a goal (no explicit prompt name), route by first matching rule:
+- Provide a single place to discover and run reusable AI capabilities.
+- Keep capability selection deterministic when users provide only a goal.
+- Standardize defaults, output contracts, and handoff patterns across capabilities.
+
+## What belongs here
+
+- Reusable capability definitions that are safe to apply across projects.
+- Deterministic routing/selection rules for goal-only requests.
+- Execution and verification patterns for delivery, debugging, QA, testing, performance, and refactors.
+- Specialized migration capability paths (for example, Next.js migration slices).
+
+## What does not belong here
+
+- Project-specific one-off notes that do not generalize.
+- Unscoped ad-hoc instructions without defined inputs/outputs.
+- Capability docs that skip verification/reporting expectations.
+
+## Primary content type today (`workflows/`)
+
+`workflows/` is the default capability family for day-to-day engineering execution.
+
+### Goal-only router (workflow-first deterministic match)
+
+When input is only a goal (no explicit capability/workflow name), route by first matching rule:
 
 | First-match rule (in order) | Route to |
 |---|---|
@@ -24,24 +47,24 @@ When input is only a goal (no explicit prompt name), route by first matching rul
 If multiple rules match, use the first row only.
 Tie-break (only after the ambiguous-goal triage row is considered): if the user asks for baseline/measurement, route to `workflows/perf-investigation.md`; if the user asks to fix a concrete failing behavior (including performance), route to `workflows/debug-fix.md`.
 
-## Input precedence (hybrid model)
+### Input precedence (hybrid model)
 
-Resolve inputs in this order: **explicit user input > router inference > prompt defaults**.
+Resolve inputs in this order: **explicit user input > router inference > capability defaults**.
 
 - `Goal` is required.
 - `Constraints` and `Definition of done` are optional and must default deterministically when omitted.
 
-## Defaulting rule
+### Defaulting rule
 
 When optional fields are inferred, list them under `Assumptions` as: `Inferred defaults applied: ...`.
 
-## Minimal Input Contract (standard)
+### Minimal Input Contract (standard)
 
 - **Required:** `Goal`
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`
 - All optional fields must resolve to explicit defaults in the assistant output.
 
-### Quick routing examples (goal-only → prompt file)
+### Quick routing examples (goal-only → capability file)
 
 Ordered to reflect first-match routing; keep only the first hit.
 
@@ -71,11 +94,11 @@ Ambiguous inputs resolved by tie-break (still first-match):
 
 Fallback example trigger: `"Make checkout better."`
 
-## Output schema precedence
+### Output schema precedence
 
-The 7-heading schema is the default baseline for prompts that do not define their own output contract.
-If a prompt defines a prompt-local output contract, follow that contract instead.
-Prompt-local output contract overrides README schema.
+The 7-heading schema is the default baseline for capabilities that do not define their own output contract.
+If a capability defines a capability-local output contract, follow that contract instead.
+Capability-local output contract overrides README schema.
 
 Default heading order:
 
@@ -87,9 +110,9 @@ Default heading order:
 6. `Risks`
 7. `Next steps`
 
-## Solo-dev entry point (start here)
+### Solo-dev entry point (start here)
 
-If you only use one starting prompt, use this decision path:
+If you only use one starting capability, use this decision path:
 
 When goal-only routing applies, always follow router-first rules above.
 
@@ -105,7 +128,7 @@ Default sequence for solo work:
 
 `workflows/feature-delivery.md` → `workflows/test-strategy.md` → `workflows/qa-audit.md`
 
-## Prompt chaining quick guide (solo-dev)
+### Capability composition guide (solo-dev)
 
 - Feature: `workflows/feature-delivery.md` → `workflows/test-strategy.md` → `workflows/qa-audit.md`
   - Handoff artifact: patch summary + changed files + known risks.
@@ -120,13 +143,13 @@ Default sequence for solo work:
   - Handoff artifact: refactor scope, invariants, and safety check list.
   - Stop condition: behavior unchanged, safety checks pass, QA clean.
 
-Typical chained prompts (mixed intent):
+Typical chained capabilities (mixed intent):
 
 `workflows/delivery-plan.md` → `workflows/feature-delivery.md` → `workflows/test-strategy.md` → `workflows/qa-audit.md`
 
 ### Kickoff template (copy/paste)
 
-Use this when starting any workflow prompt:
+Use this when starting any workflow capability:
 
 ```text
 Goal: <what outcome you want>
@@ -138,15 +161,26 @@ Definition of done: <concrete checks and artifacts>
 
 Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/qa-audit.md`.
 
-## Structure
+## Future content types later (agents, instructions, evals, tools)
 
-- `migration/` — prompts for migration/cutover work.
-- `workflows/` — prompts for delivery and engineering workflow execution.
+Planned expansion areas beyond `workflows/`:
 
-## Prompt index
+- `agents/` for role-scoped, long-running execution personas.
+- `instructions/` for reusable policy and style overlays.
+- `evals/` for capability quality, regressions, and acceptance criteria.
+- `tools/` for automations and helper scripts tied to capabilities.
 
-- `CONTRACTS.md` — matrix of prompt output contracts (required heading order, status vocabulary, and README-schema override behavior).
-- `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for prompt docs and contracts.
+These should adopt the same deterministic routing and explicit input/output expectations.
+
+## Repo map
+
+- `migration/` — specialized capabilities for migration/cutover work (including `migration/nextmig.md`).
+- `workflows/` — primary capabilities for delivery and engineering workflow execution.
+
+### Capability index
+
+- `CONTRACTS.md` — matrix of capability output contracts (required heading order, status vocabulary, and README-schema override behavior).
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for capability docs and contracts.
 
 ### `migration/`
 - `migration/nextmig.md` — orchestrates Express + Vite → Next.js migration slices with gates, verification, and ledger updates. Output: migration slice plan + checklist + ledger update notes.
@@ -161,13 +195,13 @@ Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/qa-audit.md
 - `workflows/refactor-safe.md` — perform low-risk refactors with explicit safety checks. Output: behavior-preserving refactor plan + validation notes.
 - `workflows/portability-upgrade.md` — docs-only portability pass guide for keeping paths/tooling examples ecosystem-neutral.
 
-## Conventions for new prompts
+### Conventions for new workflows/capabilities
 
-- Put migration-focused prompts in `migration/`; put day-to-day delivery/playbook prompts in `workflows/`.
+- Put migration-focused capabilities in `migration/`; put day-to-day delivery/playbook capabilities in `workflows/`.
 - Use lowercase kebab-case filenames (example: `workflows/api-contract-audit.md`).
-- Keep each prompt self-contained with:
+- Keep each capability self-contained with:
   1. purpose,
   2. required inputs,
   3. execution steps,
   4. verification/reporting format.
-- Prefer adding new files in these subfolders; avoid placing prompt files at repo root unless they are top-level registry/governance docs.
+- Prefer adding new files in these subfolders; avoid placing capability files at repo root unless they are top-level registry/governance docs.

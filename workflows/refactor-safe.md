@@ -90,5 +90,5 @@ Note: This prompt uses a prompt-local output format and overrides the README def
 Stop and request explicit approval if you detect:
 - contract/API/schema drift,
 - security/privacy/auth behavior change,
-- migration/backfill requirement,
+- data-shape/backfill requirement,
 - multi-module changes that cannot be sliced safely.

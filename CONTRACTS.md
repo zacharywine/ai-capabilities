@@ -4,7 +4,6 @@ This matrix captures each capability/workflow-local output contract and status v
 
 | Capability / workflow doc | Required headings/order | Status vocabulary | Overrides README schema? |
 |---|---|---|---|
-| `migration/nextmig.md` | 1) Assumptions → 2) Gate status → 3) Changes made → 4) Verification commands + results → 5) Risks/open concerns → 6) Migration ledger updates → 7) Next steps (max 3) | `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/delivery-plan.md` | 1) Assumptions → 2) Milestone slices → 3) Dependencies → 4) Risk register → 5) Verification strategy → 6) Exit criteria | Dependencies keep planning axis (`ready`, `blocked`, `unknown`); command/check reporting uses `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/feature-delivery.md` | 1) Assumptions → 2) Scope / Invariants / Non-goals → 3) Smallest Safe Implementation Plan → 4) Code Change Summary → 5) Verification Commands / Results → 6) Risks → 7) Next Steps | `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |
 | `workflows/debug-fix.md` | 1) Reproduction recipe → 2) Expected vs actual → 3) Root-cause hypothesis list → 4) Minimal fix → 5) Targeted validation → 6) Regression guard → 7) Next steps (max 3) | `PASS`, `FAIL`, `BLOCKED`, `UNKNOWN` | Yes |

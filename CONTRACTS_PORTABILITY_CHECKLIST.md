@@ -9,7 +9,6 @@ Use only: `PASS` | `FAIL` | `BLOCKED` | `UNKNOWN`.
 - [ ] README path references are repo-relative and do not assume any legacy docs-folder root.
 - [ ] `workflows/test-strategy.md` canonical examples are toolchain-neutral (`<repo-...-command>` placeholders), without hardcoded ecosystem defaults.
 - [ ] `CONTRACTS.md` capability/workflow contract matrix remains unchanged unless a capability/workflow-local output contract actually changed.
-- [ ] `migration/nextmig.md` portability defaults and verification fallback policy remain aligned with README and contracts.
 - [ ] `workflows/portability-upgrade.md` guidance matches this checklist and does not introduce new status terms.
 
 ## Report format (docs-only)

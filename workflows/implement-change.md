@@ -22,15 +22,15 @@ Use when request is behavior-preserving cleanup.
    - State explicit assumptions only when requirements are incomplete.
 2. **Scope / Invariants / Non-goals**
    - Define exact change scope, must-hold invariants, and explicit non-goals.
-3. **Smallest safe implementation plan**
+3. **Smallest Safe Implementation Plan**
    - List minimum implementation steps and rollback command.
-4. **Code change summary**
+4. **Code Change Summary**
    - Summarize touched files and what changed.
-5. **Verification commands / results**
+5. **Verification Commands / Results**
    - List only commands actually run.
    - Report `PASS|FAIL|BLOCKED|UNKNOWN` with reason.
    - If not runnable, mark `UNKNOWN` and state exact command you would run.
 6. **Risks**
    - List key risks plus mitigation/monitoring.
-7. **Next steps**
+7. **Next Steps**
    - Up to 3 concrete follow-ups; include exact commands when relevant.

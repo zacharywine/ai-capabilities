@@ -3,7 +3,7 @@
 ## Router-first
 - **Use when:** goal is to reproduce, isolate, and fix a defect or failing behavior.
 - **Do not use when:** goal is plan-only sequencing or static-only QA audit.
-- **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/qa-audit.md`.
+- **Typical chained prompts:** `workflows/test-strategy.md` -> `workflows/static-audit.md`.
 - **Required mode/inputs:** none.
 
 ## Minimal input contract

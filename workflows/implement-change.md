@@ -12,15 +12,16 @@
 
 ## Refactor-safe mode (merged from legacy refactor workflow)
 Use when request is behavior-preserving cleanup.
-- Keep public API/schema/behavior unchanged unless explicitly scoped.
+- Require explicit preservation targets: public API, schema/contracts, and externally visible behavior.
 - Work in small reversible slices.
-- Stop and request approval if contract/API/schema/security behavior drift is required.
+- Must stop and request approval if contract/API/schema/security behavior drift is required.
 
 ## Required flow
 1. **Assumptions**
    - State explicit assumptions only when requirements are incomplete.
 2. **Scope / Invariants / Non-goals**
    - Define exact change scope, must-hold invariants, and explicit non-goals.
+   - Include a **Preserved invariants checklist** (required in `Mode: refactor-safe`).
 3. **Smallest Safe Implementation Plan**
    - List minimum implementation steps and rollback command.
 4. **Code Change Summary**

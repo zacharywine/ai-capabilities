@@ -1,11 +1,10 @@
 # Investigate Performance Workflow
 
 ## Router-first
-- **Use when:** goal is to measure slowness/regression and choose the safest optimization path.
-- **Do not use when:** goal is general feature delivery without performance evidence.
+- **Use when:** goal is baseline/profile/compare analysis and ranking optimization options.
+- **Do not use when:** goal is immediate fix-now defect remediation (hand off to debug/implement workflows).
 - **Typical chained workflows:** `workflows/plan-delivery.md` -> `workflows/implement-change.md`.
 - **Required mode/inputs:** baseline metrics and collection commands must be provided or captured.
-
 ## Minimal input contract
 - **Required:** `Goal`
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.

@@ -1,11 +1,10 @@
 # Plan Delivery Workflow (Plan Mode Only)
 
 ## Router-first
-- **Use when:** goal is plan-only output (milestones, dependencies, risks, verification strategy).
-- **Do not use when:** goal requires implementation or file edits.
+- **Use when:** goal is artifact-only planning output (milestones, dependencies, risks, verification strategy).
+- **Do not use when:** goal requires implementation or any file edits.
 - **Typical chained workflows:** `workflows/implement-change.md` -> `workflows/test-strategy.md`.
 - **Required mode/inputs:** plan mode only; no file edits.
-
 ## Minimal input contract
 - **Required:** `Goal`
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.

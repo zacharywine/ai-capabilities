@@ -1,11 +1,10 @@
 # Debug Fix Workflow
 
 ## Router-first
-- **Use when:** goal is to reproduce, isolate, and fix a defect or failing behavior.
-- **Do not use when:** goal is plan-only sequencing or static-only QA audit.
+- **Use when:** goal is restoring expected behavior for a concrete failing behavior.
+- **Do not use when:** goal is baseline/profile/compare measurement-first investigation.
 - **Typical chained workflows:** `workflows/test-strategy.md` -> `workflows/static-audit.md`.
 - **Required mode/inputs:** none.
-
 ## Minimal input contract
 - **Required:** `Goal`
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.

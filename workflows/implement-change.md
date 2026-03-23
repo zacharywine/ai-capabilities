@@ -1,11 +1,10 @@
 # Implement Change Workflow
 
 ## Router-first
-- **Use when:** goal is implementing a scoped change with verification and rollback notes.
-- **Do not use when:** goal is plan-only output or static-only audit.
+- **Use when:** goal is code/file changes, including requests that also ask for a short plan.
+- **Do not use when:** goal is artifact-only planning output with no file edits.
 - **Typical chained workflows:** `workflows/test-strategy.md` -> `workflows/static-audit.md`.
-- **Required mode/inputs:** none.
-
+- **Required mode/inputs:** output must declare exactly one mode line: `Mode: implement` or `Mode: refactor-safe`.
 ## Minimal input contract
 - **Required:** `Goal`
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`.

@@ -15,6 +15,6 @@ Minimal, human-readable eval fixtures for the workflows-first model.
 ## How to use
 
 - Manual review: inspect each case and compare with current docs.
-- Scripted review (optional): parse YAML and assert `expected_workflow` plus required heading/order markers.
+- Scripted review (optional): parse routing.yaml to assert expected_workflow and contracts.yaml to assert required heading/order markers.
 
 These fixtures are intentionally lightweight and portable (no required harness/dependencies).

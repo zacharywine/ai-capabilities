@@ -157,13 +157,13 @@ Definition of done: <concrete checks and artifacts>
 
 Use this fast recovery loop: `workflows/debug-fix.md` → `workflows/static-audit.md`.
 
-## Future content types later (agents, instructions, evals, tools)
+## Additional content types (agents, instructions, evals, tools)
 
 Planned expansion areas beyond `workflows/`:
 
 - `agents/` for role-scoped, long-running execution personas.
 - `instructions/` for reusable policy and style overlays.
-- `evals/` for capability quality, regressions, and acceptance criteria.
+- `evals/` for capability quality, routing regressions, and output-contract acceptance checks.
 - `tools/` for automations and helper scripts tied to capabilities.
 
 These should adopt the same deterministic routing and explicit input/output expectations.
@@ -176,6 +176,7 @@ These should adopt the same deterministic routing and explicit input/output expe
 
 - `CONTRACTS.md` — matrix of workflow output contracts (required heading order, status vocabulary, and README-schema override behavior).
 - `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for workflow docs and contracts.
+- `evals/` — lightweight routing and contract-drift eval fixtures for workflows-first behavior.
 
 ### `workflows/`
 - `workflows/plan-delivery.md` — plan scoped delivery work into clear, executable steps. Output: ordered implementation plan with risks/dependencies.

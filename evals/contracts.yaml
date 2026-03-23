@@ -1,0 +1,98 @@
+version: 1
+source_of_truth: CONTRACTS.md
+checks:
+  - workflow: workflows/plan-delivery.md
+    contract_markers:
+      required_heading_order:
+        - Assumptions
+        - Milestone Slices
+        - Dependencies
+        - Risk Register
+        - Verification Strategy
+        - Exit Criteria
+      required_status_tokens:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+
+  - workflow: workflows/implement-change.md
+    contract_markers:
+      required_heading_order:
+        - Assumptions
+        - Scope / Invariants / Non-goals
+        - Smallest Safe Implementation Plan
+        - Code Change Summary
+        - Verification Commands / Results
+        - Risks
+        - Next Steps
+      required_status_tokens:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+      mode_line_one_of:
+        - "Mode: implement"
+        - "Mode: refactor-safe"
+
+  - workflow: workflows/debug-fix.md
+    contract_markers:
+      required_heading_order:
+        - Reproduction recipe
+        - Expected vs actual
+        - Root-cause hypothesis list
+        - Minimal fix
+        - Targeted validation
+        - Regression guard
+        - Next steps
+      required_status_tokens:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+
+  - workflow: workflows/static-audit.md
+    contract_markers:
+      required_severity_order:
+        - critical
+        - high
+        - medium
+        - low
+      required_trailing_section: Summary
+      optional_status_tokens_for_evidence:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+
+  - workflow: workflows/test-strategy.md
+    contract_markers:
+      required_section_order:
+        - Test pyramid mapping
+        - Critical paths
+        - Edge and error cases
+        - Minimal suite for touched area
+        - Command matrix with expected signals
+      required_status_tokens:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+
+  - workflow: workflows/investigate-performance.md
+    contract_markers:
+      required_heading_order:
+        - Baseline
+        - Hotspots
+        - Ranked options
+        - Decision + next command(s)
+      required_status_tokens:
+        - PASS
+        - FAIL
+        - BLOCKED
+        - UNKNOWN
+      required_table_columns:
+        - Command
+        - Metric
+        - Status
+        - Evidence

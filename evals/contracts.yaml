@@ -10,7 +10,11 @@ checks:
         - Risk Register
         - Verification Strategy
         - Exit Criteria
-      required_status_tokens:
+      required_dependency_status_tokens:
+        - ready
+        - blocked
+        - unknown
+      optional_status_tokens_for_command_reporting:
         - PASS
         - FAIL
         - BLOCKED
@@ -58,7 +62,7 @@ checks:
         - high
         - medium
         - low
-      required_trailing_section: Summary
+      required_summary_count_by_severity: true
       optional_status_tokens_for_evidence:
         - PASS
         - FAIL

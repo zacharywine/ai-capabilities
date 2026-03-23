@@ -172,6 +172,13 @@ These should adopt the same deterministic routing and explicit input/output expe
 
 - `workflows/` — primary capabilities for delivery and engineering workflow execution.
 
+## Consume in another repo (60-second setup)
+
+- Sync/copy this repo's shared library files: `workflows/`, `README.md` (router/source defaults), `CONTRACTS.md` (workflow-local output contracts), and `evals/` (drift fixtures).
+- Treat source-of-truth in this order: workflow doc contract text (`workflows/*.md`) -> `CONTRACTS.md` matrix -> `README.md` router/defaults -> `evals/*.yaml` fixtures.
+- In target repos, keep repo-specific policy/infrastructure instructions in that target repo (for example local AGENTS/CI/docs), not in this shared library.
+- For updates, prefer upstream fast-forward syncs; keep local overrides minimal and isolated to a small compatibility patch so upstream contract/routing changes can be pulled cleanly.
+
 ### Capability index
 
 - `CONTRACTS.md` — matrix of workflow output contracts (required heading order, status vocabulary, and README-schema override behavior).

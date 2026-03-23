@@ -10,7 +10,7 @@ Minimal, human-readable eval fixtures for the workflows-first model.
 ## Files
 
 - `evals/routing.yaml` — golden routing cases (`input`, `expected_workflow`, `rationale`).
-- `evals/contracts.yaml` — practical output-shape checks per active workflow.
+- `evals/contracts.yaml` — practical output-shape checks per active workflow, with optional markers where contracts allow variation.
 
 ## How to use
 

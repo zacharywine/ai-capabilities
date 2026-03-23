@@ -1,0 +1,62 @@
+version: 1
+source_of_truth: README.md
+cases:
+  # Clear first-match cases
+  - id: routing_debug_fix_clear
+    input: "Checkout throws 500 after coupon apply; fix it."
+    expected_workflow: workflows/debug-fix.md
+    rationale: "Concrete failing behavior with fix-now intent routes to debug-fix first."
+
+  - id: routing_plan_only_clear
+    input: "Give me milestones to ship account deletion safely."
+    expected_workflow: workflows/plan-delivery.md
+    rationale: "Artifact-only planning intent routes to plan-delivery."
+
+  - id: routing_code_change_clear
+    input: "Add bulk invite support for team admins."
+    expected_workflow: workflows/implement-change.md
+    rationale: "Build/change request routes to implement-change."
+
+  - id: routing_perf_measurement_clear
+    input: "Measure API latency regression from last release."
+    expected_workflow: workflows/investigate-performance.md
+    rationale: "Measurement/profile intent routes to investigate-performance."
+
+  - id: routing_static_audit_clear
+    input: "Do a read-only QA pass on signup flow."
+    expected_workflow: workflows/static-audit.md
+    rationale: "Read-only quality review intent routes to static-audit."
+
+  - id: routing_test_strategy_clear
+    input: "Define test coverage for the new billing webhook."
+    expected_workflow: workflows/test-strategy.md
+    rationale: "Test-scope/coverage intent routes to test-strategy."
+
+  # Tie-break cases
+  - id: routing_tiebreak_fix_over_measure
+    input: "Checkout is slow; profile it and make it fast."
+    expected_workflow: workflows/debug-fix.md
+    rationale: "Fix-now verbs beat measurement verbs."
+
+  - id: routing_tiebreak_measure_over_plan
+    input: "Auth got slower after deploy; establish baseline and roadmap."
+    expected_workflow: workflows/investigate-performance.md
+    rationale: "Measurement verbs beat planning verbs."
+
+  # Ambiguous edge cases
+  - id: routing_ambiguous_high_level
+    input: "Make onboarding better for enterprise users."
+    expected_workflow: workflows/plan-delivery.md
+    rationale: "High-level ambiguous outcome defaults to plan-delivery with triage."
+
+  - id: routing_ambiguous_quality_wording
+    input: "Review this PR for security and correctness risks (read-only)."
+    expected_workflow: workflows/static-audit.md
+    rationale: "Explicit read-only review intent routes to static-audit."
+
+  # Refactor-safe regression guard case
+  - id: routing_refactor_safe
+    input: "Refactor cart totals module without changing behavior."
+    expected_workflow: workflows/implement-change.md
+    expected_mode_hint: refactor-safe
+    rationale: "Behavior-preserving cleanup routes to implement-change in refactor-safe mode."

@@ -1,6 +1,6 @@
 # Contracts Portability Checklist
 
-Use this checklist for docs-only portability passes across capability/workflow files.
+Use this checklist for docs-only portability passes across workflow docs.
 
 ## Status vocabulary
 Use only: `PASS` | `FAIL` | `BLOCKED` | `UNKNOWN`.
@@ -8,7 +8,7 @@ Use only: `PASS` | `FAIL` | `BLOCKED` | `UNKNOWN`.
 ## Checklist
 - [ ] README path references are repo-relative and do not assume any legacy docs-folder root.
 - [ ] `workflows/test-strategy.md` canonical examples are toolchain-neutral (`<repo-...-command>` placeholders), without hardcoded ecosystem defaults.
-- [ ] `CONTRACTS.md` capability/workflow contract matrix remains unchanged unless a capability/workflow-local output contract actually changed.
+- [ ] `CONTRACTS.md` workflow contract matrix remains unchanged unless a workflow-local output contract actually changed.
 
 ## Report format (docs-only)
 1. Assumptions

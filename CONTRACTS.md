@@ -1,6 +1,6 @@
-# Capability & Workflow Contracts Matrix
+# Workflow Contracts Matrix
 
-This matrix captures each capability/workflow-local output contract and status vocabulary.
+This matrix captures each workflow-local output contract and status vocabulary.
 
 | Capability / workflow doc | Required headings/order | Status vocabulary | Overrides README schema? |
 |---|---|---|---|
@@ -13,4 +13,4 @@ This matrix captures each capability/workflow-local output contract and status v
 
 
 ## Portability references
-- `CONTRACTS_PORTABILITY_CHECKLIST.md` is the docs-only consistency checklist for capability/workflow portability passes.
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` is the docs-only consistency checklist for workflow portability passes.

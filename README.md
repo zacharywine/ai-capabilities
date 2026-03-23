@@ -60,7 +60,7 @@ When optional fields are inferred, list them under `Assumptions` as: `Inferred d
 - **Optional:** `Mode`, `Scope`, `Constraints`, `Definition of done`
 - All optional fields must resolve to explicit defaults in the assistant output.
 
-### Quick routing examples (goal-only → capability file)
+### Quick routing examples (goal-only → workflow file)
 
 Ordered to reflect first-match routing; keep only the first hit.
 
@@ -75,6 +75,8 @@ Ordered to reflect first-match routing; keep only the first hit.
 | "Create a delivery roadmap for SOC2 logging work." | `workflows/plan-delivery.md` |
 | "Do a read-only QA pass on signup flow." | `workflows/static-audit.md` |
 | "Define test coverage for the new billing webhook." | `workflows/test-strategy.md` |
+| "What is the smallest safe test plan for this auth refactor?" | `workflows/test-strategy.md` |
+| "Review this PR for security and correctness risks (read-only)." | `workflows/static-audit.md` |
 | "Broken mobile nav on iOS after yesterday's merge." | `workflows/debug-fix.md` |
 | "Improve dashboard responsiveness and capture baseline." | `workflows/investigate-performance.md` |
 | "Make onboarding better for enterprise users." | `workflows/plan-delivery.md` (ambiguous high-level outcome only) |
@@ -91,9 +93,9 @@ Fallback example trigger: `"Make checkout better."`
 
 ### Output schema precedence
 
-The 7-heading schema is the default baseline for capabilities that do not define their own output contract.
-If a capability defines a capability-local output contract, follow that contract instead.
-Capability-local output contract overrides README schema.
+The 7-heading schema is the default baseline when a workflow does not define a workflow-local output contract.
+If a workflow defines a workflow-local output contract, follow that contract instead.
+Workflow-local output contracts override this README schema.
 
 Default heading order:
 
@@ -172,8 +174,8 @@ These should adopt the same deterministic routing and explicit input/output expe
 
 ### Capability index
 
-- `CONTRACTS.md` — matrix of capability output contracts (required heading order, status vocabulary, and README-schema override behavior).
-- `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for capability docs and contracts.
+- `CONTRACTS.md` — matrix of workflow output contracts (required heading order, status vocabulary, and README-schema override behavior).
+- `CONTRACTS_PORTABILITY_CHECKLIST.md` — portability consistency checklist for workflow docs and contracts.
 
 ### `workflows/`
 - `workflows/plan-delivery.md` — plan scoped delivery work into clear, executable steps. Output: ordered implementation plan with risks/dependencies.
@@ -182,8 +184,7 @@ These should adopt the same deterministic routing and explicit input/output expe
 - `workflows/test-strategy.md` — define targeted, risk-based test coverage for a change. Output: prioritized test matrix and execution scope.
 - `workflows/static-audit.md` — run a structured QA audit and report findings with evidence. Output: issue list with severity, repro, and evidence.
 - `workflows/investigate-performance.md` — investigate performance issues and propose/verify improvements. Output: bottleneck analysis + measured before/after impact.
-- `workflows/implement-change.md` (Refactor-safe mode) — perform low-risk refactors with explicit safety checks. Output: behavior-preserving refactor plan + validation notes.
-- portability-upgrade workflow — archived (not part of active workflow routing).
+- Refactor-safe requests also route to `workflows/implement-change.md` (`Mode: refactor-safe`).
 
 ### Conventions for new workflows/capabilities
 
